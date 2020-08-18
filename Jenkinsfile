@@ -16,7 +16,9 @@ pipeline {
     }
     stage('Tests') {
       steps { 
-        sh 'npm run test'
+        sh 'npm run test-setup'
+        sh 'npm test'
+        sh 'run dopublish || true'
       }
     }
     stage('Deploy to Heroku') {
