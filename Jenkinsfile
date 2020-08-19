@@ -10,7 +10,7 @@ pipeline {
         git 'https://github.com/dnduta/devops-ip1'
       }
     }
-    stage('Build the project: install dependencies') {
+    stage('Build the project - install dependencies') {
       steps { 
         sh 'npm install'
       }
@@ -27,7 +27,7 @@ pipeline {
     stage('Deploy to Heroku') {
         steps {
             withCredentials([usernameColonPassword(credentialsId: 'heroku-login', variable: 'HEROKU_CREDENTIALS' )]){
-                sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/gitau-gallery.git master'
+                sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/gitau-gallery.git master -f'
             }
         }
     } 
