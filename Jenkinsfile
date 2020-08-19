@@ -1,7 +1,7 @@
 pipeline { 
   agent any
   tools { 
-    gradle "Gradle-6"
+    // gradle "Gradle-6"
     nodejs "nodejs"
   }
   stages { 
@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Build the project') {
       steps { 
-        sh 'gradle build'
+        sh 'npm build'
       }
     }
     stage('Tests') {
