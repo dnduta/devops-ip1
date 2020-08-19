@@ -2,6 +2,7 @@ pipeline {
   agent any
   tools { 
     gradle "Gradle-6"
+    nodejs "nodejs"
   }
   stages { 
     stage('clone repository') {
@@ -15,11 +16,14 @@ pipeline {
       }
     }
     stage('Tests') {
-      steps { 
-        sh 'npm run test-setup'
-        sh 'npm test'
-        sh 'run dopublish || true'
-      }
+        tools {
+            nodejs "nodejs"
+        }
+        steps { 
+            sh 'npm run test-setup'
+            sh 'npm test'
+            sh 'run dopublish || true'
+        }
     }
     stage('Deploy to Heroku') {
         steps {
