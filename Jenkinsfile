@@ -10,9 +10,9 @@ pipeline {
         git 'https://github.com/dnduta/devops-ip1'
       }
     }
-    stage('Build the project') {
+    stage('Build the project: install dependencies') {
       steps { 
-        sh 'npm build'
+        sh 'npm install'
       }
     }
     stage('Tests') {
