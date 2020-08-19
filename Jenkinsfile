@@ -20,9 +20,8 @@ pipeline {
             nodejs "nodejs"
         }
         steps { 
-            sh 'npm run test-setup'
+            sh 'npm install'
             sh 'npm test'
-            sh 'run dopublish || true'
         }
     }
     stage('Deploy to Heroku') {
