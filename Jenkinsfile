@@ -1,7 +1,6 @@
 pipeline { 
   agent any
   tools { 
-    // gradle "Gradle-6"
     nodejs "nodejs"
   }
   stages { 
@@ -15,12 +14,8 @@ pipeline {
         sh 'npm install'
       }
     }
-    stage('Tests') {
-        tools {
-            nodejs "nodejs"
-        }
+    stage('Tests') {        
         steps { 
-            // sh 'npm install'
             sh 'npm test'
         }
     }
