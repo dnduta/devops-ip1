@@ -20,7 +20,7 @@ pipeline {
             nodejs "nodejs"
         }
         steps { 
-            sh 'npm install'
+            // sh 'npm install'
             sh 'npm test'
         }
     }
