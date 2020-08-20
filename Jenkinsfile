@@ -59,6 +59,9 @@ pipeline {
 
   post {
     success {
+
+      // slackSend color: "good", message: "Message from Jenkins Pipeline"
+
         emailext attachLog: true, 
         body: EMAIL_BODY,
         subject: EMAIL_SUBJECT_SUCCESS,
@@ -73,3 +76,6 @@ pipeline {
   }
 
 }
+
+
+// moringaclassroom.slack.com
