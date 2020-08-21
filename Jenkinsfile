@@ -23,9 +23,20 @@ pipeline {
 
     EMAIL_SUBJECT_SUCCESS = "Status: 'SUCCESS' -Job \'${env.JOB_NAME}:${env.BUILD_NUMBER}\'" 
 
-    EMAIL_SUBJECT_FAILURE = "Status: 'FAILURE' -Job \'${env.JOB_NAME}:${env.BUILD_NUMBER}\'" 
+    // EMAIL_SUBJECT_FAILURE = "Status: 'FAILURE' -Job \'${env.JOB_NAME}:${env.BUILD_NUMBER}\'" 
 
     EMAIL_RECEPIENT = 'info@leucommunications.co.ke'
+
+
+    SLACK_SUCCESS = """ 
+
+      BUILD SUCCESS!
+
+      Build No# :  ${env.BUILD_NUMBER}
+
+      App Url: https://gitau-gallery.herokuapp.com/
+
+    """
 
   }  
   tools { 
@@ -59,13 +70,7 @@ pipeline {
 
   post {
     success {
-
-      // slackSend color: "good", message: "Message from Jenkins Pipeline"
-
-        emailext attachLog: true, 
-        body: EMAIL_BODY,
-        subject: EMAIL_SUBJECT_SUCCESS,
-        to: EMAIL_RECEPIENT
+      slackSend color: "good", message: SLACK_SUCCESS    
     }
     failure {
         emailext attachLog: true, 
@@ -76,6 +81,3 @@ pipeline {
   }
 
 }
-
-
-// moringaclassroom.slack.com
